@@ -1,8 +1,64 @@
+.nav-link, .nav-link:hover:link:active{
+  color: white;
+}
+.logo {
+  width: 178px;
+  height: 100px;
+}
+.ContenitoreNav {
+  background-color: black;
+  color: white;
+}
+.PulsanteUtente {
+  border-color: black;
+}
 .App {
   text-align: center;
 }
+.linkText {
+  background-color: orangered;
+}
 
-.App-logo {
+.PulsanteFooter {
+  background-color: #2D2D2D;
+  color: white;
+  box-shadow: 0px 0px 9px 1px white;
+}
+#paragrafoFooter p, i {
+  color: white;
+}
+.immagineFooter {
+  width: 320px;
+  height: 70px;
+}
+.ContenitoreFooter1 {
+  background-color: black;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  flex-shrink: 0;
+}
+/* .login {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+} */
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +91,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
