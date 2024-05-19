@@ -33,6 +33,7 @@
 }
 .ContenitoreFooter1 {
   background-color: black;
+  height: auto;
 }
 html, body {
   height: 100%;
@@ -52,6 +53,42 @@ main {
 footer {
   flex-shrink: 0;
 }
+
+.card-group {
+  display: flex !important; 
+  flex-wrap: wrap !important;
+}
+
+.card-group .col {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.card {
+  flex: 1 1 auto !important;
+}
+.button-orange-red {
+  border-color: orangered;
+  background-color: orangered !important;
+}
+.carrello-container {
+  padding: 20px;
+}
+
+.carrello-vuoto {
+  min-height: calc(100vh - 56px - 100px); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.carrello-card {
+  width: 100%;
+  max-width: 300px; 
+  margin: auto;
+}
+
 /* .login {
   display: flex !important;
   flex-direction: column !important;

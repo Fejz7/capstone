@@ -1,150 +1,59 @@
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-function MyMain() {
 
+function MyMain({ setProdottiCarrello, termineRicerca }) {
+  const prodotti = [
+    { nome: 'Final Fantasy VII Rebirth', prezzo: '79,99 €', immagine: '.\\assets\\FF7Rebirth.jpg' },
+    { nome: 'Final Fantasy XI Free Trial', prezzo: '0,00 €', immagine: '.\\assets\\FFXIFreeTrial.jpg' },
+    { nome: 'Final Fantasy X/X-2', prezzo: '59.99 €', immagine: '.\\assets\\FFX-X2.jpg' },
+    { nome: 'Dragon Quest Heroes II', prezzo: '59.99 €', immagine: '.\\assets\\Heroes.jpg' },
+    { nome: 'Final Fantasy XIV DawnTrail', prezzo: '39.99 €', immagine: '.\\assets\\FFXIVDawnTrail.jpg' },
+    { nome: 'Chrono Cross', prezzo: '29.99 €', immagine: '.\\assets\\CHRONOCROSS.jpg' },
+    { nome: 'Final Fantasy VII Remake', prezzo: '69.99 €', immagine: '.\\assets\\FF7Remake.jpg' },
+    { nome: 'Final Fantasy XII', prezzo: '49,99 €', immagine: '.\\assets\\FFXII.jpg' },
+    { nome: 'Dragon Quest Treasures', prezzo: '59,99 €', immagine: '.\\assets\\DQTreasures.jpg' },
+    { nome: 'Nier Automata', prezzo: '39,99 €', immagine: '.\\assets\\Nier.jpg' }
+  ];
 
+  const prodottiFiltrati = prodotti.filter(prodotto => 
+    prodotto.nome.toLowerCase().includes(termineRicerca.toLowerCase())
+  );
 
- 
-    return(
-        
+  const aggiungiAlCarrello = (prodotto) => {
+    setProdottiCarrello((prevProdottiCarrello) => [...prevProdottiCarrello, prodotto]);
+  };
 
-<Container fluid>
-
-    <Row>
-    <Col><img style={{width: '100%', height: '75%'}} src=".\assets\goldenweek.jpg" alt="" /></Col>
-    </Row>
-    <h1>I più venduti</h1>
-    <Row>
+  return (
+    <Container fluid>
+      <Row>
         <Col>
-    <Card className='mb-2' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src=".\assets\FF7Rebirth.jpg" />
-      <Card.Body>
-        <Card.Title>Final Fantasy VII Rebirth</Card.Title>
-        <Card.Text>
-          79,99 €
-        </Card.Text>
-        <Button variant="dark">Aggiungi al carrello</Button>
-      </Card.Body>
-    </Card>
- </Col>
-        <Col><Card className='mb-2' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src=".\assets\FFXIFreeTrial.jpg" />
-      <Card.Body>
-        <Card.Title>Final Fantasy XI Free Trial</Card.Title>
-        <Card.Text>
-          0,00 €
-        </Card.Text>
-        <Button variant="dark">Aggiungi al carrello</Button>
-      </Card.Body>
-    </Card></Col>
-        <Col><Card className='mb-2' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src=".\assets\FFX-X2.jpg" />
-      <Card.Body>
-        <Card.Title>Final Fantasy X/X-2</Card.Title>
-        <Card.Text>
-          59.99 €
-        </Card.Text>
-        <Button variant="dark">Aggiungi al carrello</Button>
-      </Card.Body>
-    </Card></Col>
-    </Row>
-    <Row>
-        <Col><Card className='mb-2' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src=".\assets\Heroes.jpg" />
-      <Card.Body>
-        <Card.Title>Dragon Quest Heroes II</Card.Title>
-        <Card.Text>
-        59.99 €
-        </Card.Text>
-        <Button variant="dark">Aggiungi al carrello</Button>
-      </Card.Body>
-    </Card></Col>
-        <Col><Card className='mb-2' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src=".\assets\FFXIVDawnTrail.jpg" />
-      <Card.Body>
-        <Card.Title>Final Fantasy XIV DawnTrail</Card.Title>
-        <Card.Text>
-          39.99 €
-        </Card.Text>
-        <Button variant="dark">Aggiungi al carrello</Button>
-      </Card.Body>
-    </Card></Col>
-        <Col><Card className='mb-2' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src=".\assets\CHRONOCROSS.jpg" />
-      <Card.Body>
-        <Card.Title>Chrono Cross</Card.Title>
-        <Card.Text>
-          29.99 €
-        </Card.Text>
-        <Button variant="dark">Aggiungi al carrello</Button>
-      </Card.Body>
-    </Card></Col>
-    </Row>
-    <Row>
-        <Col><Card className='mb-2' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src=".\assets\FF7Remake.jpg" />
-      <Card.Body>
-        <Card.Title>Final Fantasy VII Remake</Card.Title>
-        <Card.Text>
-          69.99 €
-        </Card.Text>
-        <Button variant="dark">Aggiungi al carrello</Button>
-      </Card.Body>
-    </Card></Col>
-        <Col><Card className='mb-2' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src=".\assets\FFXII.jpg" />
-      <Card.Body>
-        <Card.Title>Final Fantasy XII</Card.Title>
-        <Card.Text>
-          49,99 €
-        </Card.Text>
-        <Button variant="dark">Aggiungi al carrello</Button>
-      </Card.Body>
-    </Card></Col>
-        <Col><Card className='mb-2' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src=".\assets\DQTreasures.jpg" />
-      <Card.Body>
-        <Card.Title>Dragon Quest Treasures</Card.Title>
-        <Card.Text>
-          59,99 €
-        </Card.Text>
-        <Button variant="dark">Aggiungi al carrello</Button>
-      </Card.Body>
-    </Card></Col>
-    </Row>
-    <Row>
-    <Col>
-    <Card className='mb-2' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src=".\assets\Nier.jpg" />
-      <Card.Body>
-        <Card.Title>Nier Automata</Card.Title>
-        <Card.Text>
-          39,99 €
-        </Card.Text>
-        <Button variant="dark">Aggiungi al carrello</Button>
-      </Card.Body>
-    </Card>
-    </Col>
-    </Row>
-</Container>
-    );}
+          <img style={{ width: '100%', height: '75%' }} src=".\assets\goldenweek.jpg" alt="" />
+        </Col>
+      </Row>
+      <h1>I più venduti</h1>
+      <Row>
+        {prodottiFiltrati.map((prodotto, index) => (
+          <Col lg="4" key={index}>
+            <Card className='mb-2' style={{width: "50%"}} >
+              <Card.Img variant="top" src={prodotto.immagine} />
+              <Card.Body>
+                <Card.Title>{prodotto.nome}</Card.Title>
+                <Card.Text>
+                  Prezzo: {prodotto.prezzo}
+                </Card.Text>
+                <Button onClick={() => aggiungiAlCarrello(prodotto)} variant="dark">Aggiungi al carrello</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  );
+}
 
 export default MyMain;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
