@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
+import { useNavigate } from 'react-router-dom';
 
 function PaginaRegistrazione({ setShowNavbar }) {
+  const [name, setName] = useState('');
+  const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     setShowNavbar(false);
@@ -16,7 +20,23 @@ function PaginaRegistrazione({ setShowNavbar }) {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    
+    try {
+      const response = await fetch('http://localhost:3001/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, surname, email, password, role: "user" }),
+      });
+
+      if (response.ok) {
+        navigate('/utente');
+      } else {
+        console.error('Registration failed');
+      }
+    } catch (error) {
+      console.error('Error registering:', error);
+    }
   };
 
   return (
@@ -26,6 +46,26 @@ function PaginaRegistrazione({ setShowNavbar }) {
       <Card className='mt-3' style={{ width: '50%' }}>
         <Card.Body className='d-flex flex-column align-items-center justify-content-center'>
           <Form onSubmit={handleRegister}>
+            <Form.Group className="mb-3" controlId="formBasicName">
+              <Form.Label>Nome</Form.Label>
+              <Form.Control 
+                type="text" 
+                placeholder="Inserisci il nome"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicSurname">
+              <Form.Label>Cognome</Form.Label>
+              <Form.Control 
+                type="text" 
+                placeholder="Inserisci il cognome"
+                value={surname}
+                onChange={(e) => setSurname(e.target.value)}
+              />
+            </Form.Group>
+
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Indirizzo Email</Form.Label>
               <Form.Control 
@@ -48,17 +88,8 @@ function PaginaRegistrazione({ setShowNavbar }) {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicName">
-        <Form.Label>Nome</Form.Label>
-        <Form.Control type="email" placeholder="Aggiungi il nome" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicSurname">
-        <Form.Label>Cognome</Form.Label>
-        <Form.Control type="email" placeholder="Aggiungi il cognome" />
-        
-      </Form.Group>
-            
-            <Button className="button-orange-red" type="submit">
+
+            <Button className='button-orange-red' type="submit">
               Registrati
             </Button>
           </Form>
