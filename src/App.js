@@ -8,17 +8,26 @@ import MyFooter from './components/MyFooter';
 import MyMain from './components/MyMain';
 import Carrello from './components/Carrello';
 import PaginaRegistrazione from './components/PaginaRegistrazione';
+import MyModal from './components/MyModal'; // Import del componente modale
 
 function App() {
   const [showNavbar, setShowNavbar] = useState(true);
   const [prodottiCarrello, setProdottiCarrello] = useState([]);
   const [termineRicerca, setTermineRicerca] = useState('');
+  const [showModal, setShowModal] = useState(false); // Stato per gestire la visualizzazione del modale
 
   const rimuoviDalCarrello = (index) => {
     const newProdottiCarrello = [...prodottiCarrello];
     newProdottiCarrello.splice(index, 1);
     setProdottiCarrello(newProdottiCarrello);
   };
+
+  const aggiungiAlCarrello = (prodotto) => {
+    setProdottiCarrello((prevProdottiCarrello) => [...prevProdottiCarrello, prodotto]);
+    setShowModal(true); // Mostra il modale quando un prodotto viene aggiunto al carrello
+  };
+
+  const handleCloseModal = () => setShowModal(false);
 
   return (
     <Router>
@@ -32,7 +41,7 @@ function App() {
             <Route path="/registrazione" element={<PaginaRegistrazione setShowNavbar={setShowNavbar} />} />
             <Route
               path="/*"
-              element={<MyMain setProdottiCarrello={setProdottiCarrello} termineRicerca={termineRicerca} />}
+              element={<MyMain aggiungiAlCarrello={aggiungiAlCarrello} termineRicerca={termineRicerca} />}
             />
             <Route
               path="/carrello"
@@ -43,6 +52,7 @@ function App() {
         <footer>
           <MyFooter />
         </footer>
+        <MyModal show={showModal} handleClose={handleCloseModal} /> {/* Aggiunto il componente modale */}
       </div>
     </Router>
   );

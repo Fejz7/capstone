@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function MyMain({ setProdottiCarrello, termineRicerca }) {
+function MyMain({ aggiungiAlCarrello, termineRicerca }) {
   const prodotti = [
     { nome: 'Final Fantasy VII Rebirth', prezzo: '79,99 €', immagine: '.\\assets\\FF7Rebirth.jpg' },
     { nome: 'Final Fantasy XI Free Trial', prezzo: '0,00 €', immagine: '.\\assets\\FFXIFreeTrial.jpg' },
@@ -23,10 +23,6 @@ function MyMain({ setProdottiCarrello, termineRicerca }) {
   const prodottiFiltrati = prodotti.filter(prodotto => 
     prodotto.nome.toLowerCase().includes(termineRicerca.toLowerCase())
   );
-
-  const aggiungiAlCarrello = (prodotto) => {
-    setProdottiCarrello((prevProdottiCarrello) => [...prevProdottiCarrello, prodotto]);
-  };
 
   return (
     <Container fluid>
@@ -57,3 +53,4 @@ function MyMain({ setProdottiCarrello, termineRicerca }) {
 }
 
 export default MyMain;
+
